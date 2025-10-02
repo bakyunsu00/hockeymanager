@@ -4,15 +4,16 @@ package org.example.domain;
 //팀은 팀명,소속지역,인원수로 나뉜다.
 public class Team {
 
+    private int id;
     private String teamName;
     private String location;
-    private int playerNums;
 
 
-    public Team(String teamName, String location, int playerNums) {
+
+    public Team(String teamName, String location) {
         this.teamName = teamName;
         this.location = location;
-        this.playerNums = playerNums;
+
     }
 
     public String getTeamName() {
@@ -23,7 +24,4 @@ public class Team {
         return location;
     }
 
-    public int getPlayerNums() {
-        return playerNums;
-    }
 }
