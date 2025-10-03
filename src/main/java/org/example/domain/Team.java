@@ -8,7 +8,9 @@ public class Team {
     private String teamName;
     private String location;
 
-
+    public int getId() {
+        return id;
+    }
 
     public Team(String teamName, String location) {
         this.teamName = teamName;

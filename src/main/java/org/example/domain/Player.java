@@ -6,11 +6,11 @@ public class Player {
     private String name;
     private int age;
     private Team team;
-    private Pos pos;
+    private String pos;
     private int backNumber;
 
 
-    public Player(String name, int age, Team team, Pos pos, int backNumber){
+    public Player(String name, int age, Team team, String pos, int backNumber){
         this.name = name;
         this.age = age;
         this.team = team;
@@ -34,7 +34,7 @@ public class Player {
         return team;
     }
 
-    public Pos getPos() {
+    public String getPos() {
         return pos;
     }
 
