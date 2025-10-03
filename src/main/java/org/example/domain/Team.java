@@ -12,7 +12,20 @@ public class Team {
         return id;
     }
 
-    public Team(String teamName, String location) {
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Team(int id, String teamName, String location) {
+        this.id = id;
         this.teamName = teamName;
         this.location = location;
 
