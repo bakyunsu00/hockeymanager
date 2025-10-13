@@ -152,4 +152,46 @@ public class jdbcPlayerDao implements PlayerDAO {
         }
         return result;
     }
-}
+
+    @Override
+    public List<Player> findByTeamId(int teamId) {
+            String sql =
+                    "SELECT p.player_id, p.player_name, p.player_age, p.player_position, p.player_backnumber, " +
+                            "       t.team_id, t.team_name, t.team_location " +
+                            "  FROM player p " +
+                            "  JOIN team t ON t.team_id = p.player_team_id " +
+                            " WHERE p.Player_team_id = ?";
+            List<Player> list = new ArrayList<>();
+
+            try (Connection con = DataSource.getConnection();
+                 PreparedStatement ps = con.prepareStatement(sql)) {
+
+                ps.setInt(1, teamId);
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        long   pid   = rs.getLong("player_id");
+                        String name  = rs.getString("player_name");
+                        int    age   = rs.getInt("player_age");
+                        String pos   = rs.getString("player_position");
+                        int    back  = rs.getInt("player_backnumber");
+
+                        int    tid   = rs.getInt("team_id");
+                        String tname = rs.getString("team_name");
+                        String treg  = rs.getString("team_location");
+
+                        // 도메인에 맞춰 Team/Player 생성 (필드명/생성자에 맞게 조정)
+                        Team team = new Team(tid, tname, treg);
+
+                        Player player = new Player(pid, name, age, team, pos, back);
+
+                        list.add(player);
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return list;
+        }
+
+    }
+

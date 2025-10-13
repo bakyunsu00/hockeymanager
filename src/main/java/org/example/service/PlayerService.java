@@ -29,4 +29,7 @@ public class PlayerService {
         return playerDAO.deletePlayer(player);
     }
 
+    public List<Player> findByTeamId(int id) {
+        return playerDAO.findByTeamId(id);
+    }
 }

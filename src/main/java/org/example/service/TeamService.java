@@ -19,6 +19,9 @@ public class TeamService {
     public Team find(int id){
         return teamDao.selectTeam(id);
     }
+    public Team findName(String name){
+        return teamDao.selectTeamName(name);
+    }
     public List<Team> findAll(){
         return teamDao.selectAll();
     }

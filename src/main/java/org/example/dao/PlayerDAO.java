@@ -11,5 +11,6 @@ public interface PlayerDAO {
         Player selectPlayer(Long id);
         List<Player> selectAll();
         int deletePlayer(Player player);
+        List<Player> findByTeamId(int id);
 
 }

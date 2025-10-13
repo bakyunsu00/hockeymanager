@@ -77,6 +77,28 @@ public class JdbcTeamDao implements TeamDAO {
         return team;
     }
 
+    public Team selectTeamName(String name) {
+
+        String selectSql = "SELECT * FROM team WHERE team_name = ?";
+        Team team = null;
+        try (Connection con = DataSource.getConnection();
+             PreparedStatement pstm = con.prepareStatement(selectSql);) {
+
+            pstm.setString(1, name);
+            try (ResultSet rs = pstm.executeQuery();) {
+                if (rs.next()) {
+                    team = new Team(rs.getInt("team_id"), rs.getString("team_name"), rs.getString("team_location"));
+                }
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return team;
+    }
+
+
+
 
     @Override
     public List<Team> selectAll() {

@@ -2,7 +2,7 @@ package org.example.domain;
 //선수는 이름,나이,팀,포지션,등번호로 나뉜다
 public class Player {
 
-    private Long id;
+    private long id;
     private String name;
     private int age;
     private Team team;
@@ -34,7 +34,7 @@ public class Player {
         this.backNumber = backNumber;
     }
 
-    public Player(Long id, String name, int age, Team team, String pos, int backNumber){
+    public Player(long id, String name, int age, Team team, String pos, int backNumber){
         this.id = id;
         this.name = name;
         this.age = age;
@@ -55,7 +55,7 @@ public class Player {
                 '}';
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
